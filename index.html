@@ -11,17 +11,17 @@
 </head>
 
 <body>
-    <div id="headerDiv">
-        <p id="h1Div">
-            Karuta Card Game
-        </p>
+    <p id="h1Div">
+        Karuta Card Game
+    </p>
+    <button id="h2DivButton" onclick="ChangeEdition()">
         <p id="h2Div">
             English Pop Edition
         </p>
-        <p id="h3Div">
-            by Can Tosun
-        </p>
-    </div>
+    </button>
+    <p id="h3Div">
+        by Can Tosun
+    </p>
     <br/>
     <br/>
     <p >Artist:</p>
@@ -45,7 +45,7 @@
         <span>Next Song</span>
     </button>
     <script>
-        let songList = [{artist: "Ed Sheeran", title: "Shape of You", lyrics: "The club isn't the best place to find a lover. So the bar is where I go. Me and my friends at the table doing shots. Drinking fast and then we talk slow. And you come over and start up a conversation with just me. And trust me I'll give it a chance now. Take my hand, stop, put Van the Man on the jukebox. And then we start to dance, and now I'm singing like"},
+        let songListEnglish = [{artist: "Ed Sheeran", title: "Shape of You", lyrics: "The club isn't the best place to find a lover. So the bar is where I go. Me and my friends at the table doing shots. Drinking fast and then we talk slow. And you come over and start up a conversation with just me. And trust me I'll give it a chance now. Take my hand, stop, put Van the Man on the jukebox. And then we start to dance, and now I'm singing like"},
                         {artist: "Akon", title: "Lonely", lyrics: "I woke up in the middle of the night. And I noticed my girl wasn't by my side. Coulda sworn I was dreaming, for her I was feenin'. So I had to take a little ride. Back tracking over these few years. Tryna figure out what I do to make it go bad. 'Cause ever since my girl left me. My whole life came crashing and I'm so"},
                         {artist: "Wiz Khalifa, Snoop Dogg", title: "Young, Wild & Free", lyrics: "Is this thing on? (word). So what we get drunk. So what we smoke weed. We're just having fun. We don't care who sees (shit). So what we go out. That's how its supposed to be. Living young and wild and free"},
                         {artist: "The Weeknd", title: "Party Monster", lyrics: "And I've seen her get richer in the pole. I've seen her, I knew she had to know. I've seen her take down that tequila. Down by the liter, I knew I had to meet her. Ooh, she mine, ooh, girl, bump and grind. Ooh, she mine, ooh, girl, bump a line. Angelina, lips like Angelina. Like Selena, ass shaped like Selena"},
@@ -71,9 +71,25 @@
                         {artist: "Linkin Park", title: "In the End", lyrics: "All I know. Time is a valuable thing. Watch it fly by as the pendulum swings. Watch it count down to the end of the day. The clock ticks life away. It's so unreal. It's so unreal, didn't look out below. Watch the time go right out the window. Trying to hold on, but didn't even know. I wasted it all just to watch you go"},
                         {artist: "Linkin Park", title: "Numb", lyrics: "Can't you see that you're smothering me. Holding too tightly, afraid to lose control?. 'Cause everything that you thought I would be. Has fallen apart right in front of you. (Caught in the undertow, just caught in the undertow). Every step that I take is another mistake to you. (Caught in the undertow, just caught in the undertow). And every second I waste is more than I can take"}];
 
-        let currentSong;
+        let songListDeutsch = [{artist: "Tokio Hotel", title: "Durch den Monsun", lyrics: "Das Fenster öffnet sich nicht mehr. Hier drin' ist es voll von dir - und leer. Und vor mir geht die letzte Kerze aus. Ich warte schon 'ne Ewigkeit. Endlich ist es jetzt so weit. Da draußen zieh'n die schwarzen Wolken auf. Ich muss durch den Monsun. Hinter die Welt. Ans Ende der Zeit. Bis kein Regen mehr fällt"},
+                        {artist: "Bones MC, RAF Camora", title: "Ohne mein Team", lyrics: "Ich schließe die Tür des Apartments. Wenn die Party komplett ist. Monika, Sarah, Belinda. Von Instagram auf meine Guestlist. Menthol in der Kippe, Soda im Drink. 'ne Chick will, dass ich für sie 'So lala' sing'. Sie will mich intim. Ich kooperiere nicht ohne mein Team. Die Sonne scheint durch die Gardine. Hautfarbe: Ovomaltine. Kokain in der Kabine zu zweit. Der Tod hat die Todespapiere verteilt"},
+                        {artist: "Stereoact", title: "Die immer lacht", lyrics: "Komm her, meine Süße. Und reich mir deine Hand. Zeig mir wer du bist, du wirst seh'n. Komm her, meine Süße. Und reich mir deine Hand. Zeig mir wer du bist und du wirst seh'n. Wie es ist. Zu lachen ohne dabei zu betrügen. Oh, zu weinen, du wirst sehen. Wie sie dich lieben. Oh, zu lieben. Ich zeig' dir wie es geht. Sie ist die eine, die immer lacht. Die immer lacht, die immer lacht, die immer lacht"},
+                        {artist: "Cro", title: "Traum", lyrics: "Yeah Baby, nimm meine Hand. Ich hab' alles schon gepackt. Komm wir beide gehen weg von hier. Sieh, der Jet ist getankt. Ich hab' Geld auf der Bank. Und noch jede Menge Plätze hier. Und immer wenn du einsam bist. Komm' ich rum, du musst nie wieder alleine sein. Denn immer wenn ich dich seh'. Macht es in mir Tick Tick Boom. So wie Dynamite. Aha, und alle andern Girls. Wären gern wie du. Aha, denn du bist wunderschön. Und gefährlich klug. Ey jo, und ich hoff', dass du mich siehst. Ich bin verliebt. Doch hab' kein' Plan, ob es dich gibt"},
+                        {artist: "Andreas Bourani", title: "Auf uns", lyrics: "Wer friert uns diesen Moment ein?. Besser kann es nicht sein. Denkt an die Tage, die hinter uns liegen. Wie lang wir Freude und Tränen schon teilen. Hier geht jeder für jeden durch's Feuer. Im Regen stehen wir niemals allein. Und solange unsere Herzen uns steuern. Wird das auch immer so sein. Ein Hoch auf das, was vor uns liegt. Dass es das Beste für uns gibt. Ein Hoch auf das, was uns vereint. Auf diese Zeit (auf diese Zeit)"},
+                        {artist: "Helene Fischer", title: "Atemlos durch die Nacht", lyrics: "Wir zieh'n durch die Straßen und die Clubs dieser Stadt. Das ist unsre Nacht, wie für uns beide gemacht, oho oho. Ich schließe meine Augen, lösche jedes Tabu. Küsse auf der Haut, so wie ein Liebes-Tattoo, oho, oho. Was das zwischen uns auch ist. Bilder die man nie vergisst. Und dein Blick hat mir gezeigt. Das ist unsre Zeit. Atemlos durch die Nacht. Bis ein neuer Tag erwacht. Atemlos einfach raus. Deine Augen zieh'n mich aus"},
+                        {artist: "Sido", title: "Bilder im Kopf", lyrics: "Ich bin im Osten aufgewachsen, bis ich neun war. Orangenes Licht und graue Häuser. Dann der Aufbruch ins Neuland. An der Entscheidung kann ich nicht nur Gutes lassen. Denn es war nicht immer einfach für uns drei hier Fuß zu fassen. Aber alles hat sich eben so ergeben, und mein Vater?. Über den will ich nicht reden, ich erwarte nichts mehr. Ich wollte keinem glauben, traute nur ein paar Gesichtern. Nachts draußen, die Augen kannten nur Straßenlichter"},
+                        {artist: "Marteria, Yasha", title: "Lila Wolken", lyrics: "Jung und ignorant, stehen auf'm Dach. Teilen die Welt auf und bau'n ein'n Palast. Aus Plänen und Träumen, jeden Tag neu. Bisschen Geld gegen Probleme, wir nehm'n, was wir woll'n. Woll'n mehr sein, mehr sein als nur ein Moment. Yeah, komm mir nicht mit großen Namen, die du kennst. Wir trinken auf Verlierer, lassen Pappbecher vergolden. Feiern hart, fallen weich auf die lila Wolken"},
+                        {artist: "Xavier Naidoo", title: "Dieser Weg", lyrics: "Also ging ich diese Straße lang. Und die Straße führte zu mir. Das Lied, das du am letzten Abend sangst. Spielte nun in mir. Noch ein paar Schritte. Und dann war ich da mit dem Schlüssel zu dieser Tür. Es war nur ein kleiner Augenblick. Einen Moment war ich nicht da. Danach ging ich einen kleinen Schritt. Und dann wurde es mir klar"},
+                        {artist: "Tim Bendzko", title: "Nur noch kurz die Welt retten", lyrics: "Ich wär so gern dabei gewesen. Doch ich hab viel zu viel zu tun. Lass uns später weiter reden. Da draußen brauchen sie mich jetzt. Die Situation wird unterschätzt. Und vielleicht hängt unser Leben davon ab. Ich weiß es ist dir ernst. Du kannst mich hier grad nicht entbehren. Nur keine Angst ich bleib nicht all zu lange fern. Muss nur noch kurz die Welt retten. Danach flieg ich zu dir."},
+                        {artist: "Die Toten Hosen", title: "Tage wie diese", lyrics: "Ich wart seit Wochen, auf diesen Tag. und tanz vor Freude, über den Asphalt. Als wär's ein Rythmus, als gäb's ein Lied. Das mich immer weiter, durch die Straßen zieht. Komm dir entgegen, dich abzuholen, wie ausgemacht. Zu der selben Uhrzeit, am selben Treffpunkt, wie letztes mal. Durch das Gedränge, der Menschenmenge. Bahnen wir uns den altbekannten Weg. Entlang der Gassen, zu den Rheinterrassen. Über die Brücken, bis hin zu der Musik. Wo alles laut ist, wo alle drauf sind, um durchzudreh'n. Wo die Anderen warten, um mit uns zu starten, und abzugeh'n"},
+                        {artist: "Marteria", title: "Verstrahlt", lyrics: "Sie hat das Sagen, ja - zieht den Karren aus dem Dreck. Alles ist perfekt, alle Windmühlen sind wie weggeblasen - weg. Ein großer Fisch braucht 'n großen Teich. Sie hat mich befreit, denn mein Aquarium war zu klein. Sie ist am Strahlen, sie hält mich tagelang wach. Steig in mein Solarwagen und fahr durch die Nacht. All die Anderen wollen mich vor ihr bewahren. Und alles was sie sagen ist wahr. Ich bin so schön verstrahlt. Ich heb ab zum Mars, 10.000 Grad"},
+                        {artist: "Peter Fox", title: "Haus am See", lyrics: "Hier bin ich gebor'n und laufe durch die Straßen. Kenn' die Gesichter, jedes Haus und jeden Laden. Ich muss mal weg, kenn jede Taube hier beim Namen. Daumen raus, ich warte auf 'ne schicke Frau mit schnellem Wagen. Die Sonne blendet, alles fliegt vorbei. Und die Welt hinter mir wird langsam klein. Doch die Welt vor mir ist für mich gemacht! Ich weiß, sie wartet und ich hol sie ab! Ich hab den Tag auf meiner Seite, ich hab Rückenwind! Ein Frauenchor am Straßenrand, der für mich singt! Ich lehne mich zurück und guck ins tiefe Blau. Schließ' die Augen und lauf einfach geradeaus."},
+                        {artist: "Andreas Bourani", title: "Auf anderen Wegen", lyrics: "Du willst gehen, ich lieber springen. Wenn du redest, will ich singen. Du schlägst Wurzeln, ich muss fliegen. Wir haben die Stille um uns totgeschwiegen. Wo ist die Liebe geblieben. Ich fühl' mich jung und du dich alt. So fallen wir um, uns fehlt der Halt. Wir müssen uns bewegen. Ich bin dafür, du dagegen. Wir gehen auf anderen Wegen"},
+                        {artist: "Juju, Henning May", title: "Vermissen", lyrics: "Ich muss mich ablenken, muss wieder Musik machen. Guck mir zu, ich füll' ab heut alleine meine Brieftasche. Aber was schreibe ich bloß?, frag' ich mich. Diese Wohnung ist auf einmal so groß ohne dich. Alle unsre Wünsche haben wir zerstört. Steige wieder in den Tourbus und ich riech' an deinem Shirt. Mal sehen, ob der Duft noch bleibt. Bis ich wieder aus dem Bus aussteig'"}];
 
-        let usedSongList = [];
+        let songList = [...songListEnglish];
+        let currentSong;
+        let currentEdition = "English";
 
         function PlaySong()
         {
@@ -108,7 +124,7 @@
                 else
                 {
                     let speech = new SpeechSynthesisUtterance(currentSong.lyrics);
-                    speech.lang = 'en-US';
+                    speech.lang = currentEdition == "English" ? 'en-US' : 'de-DE';
                     window.speechSynthesis.speak(speech);
 
                     document.getElementById("playPauseIcon").innerText = "pause";
@@ -133,7 +149,7 @@
 
             let randomIndex = Math.floor(Math.random() * songList.length);
             currentSong = songList[randomIndex];
-            usedSongList.push(songList.splice(randomIndex, 1));
+            songList.splice(randomIndex, 1);
 
             document.getElementById("currentSongArtist").innerText = "";
             document.getElementById("currentSongTitle").innerText = "";
@@ -162,6 +178,24 @@
             }
         }
 
+        function ChangeEdition()
+        {
+            if (currentEdition == "English")
+            {
+                currentEdition = "Deutsch";
+                songList = [...songListDeutsch];
+                document.getElementById("h2Div").innerText = "Deutsch Pop Edition";
+                NextSong();
+            }
+            else
+            {
+                currentEdition = "English";
+                songList = [...songListEnglish];
+                document.getElementById("h2Div").innerText = "English Pop Edition";
+                NextSong();
+            }
+        }
+
         NextSong();
     </script>
     <style>
@@ -184,6 +218,12 @@
         #h2Div
         {
             font-size: 200%;
+        }
+        #h2DivButton
+        {
+            background-color: transparent;
+            border: none;
+            color: white;
         }
         #h3Div
         {
